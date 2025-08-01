@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://baq55hf4kl8xy"
+path="res://.godot/imported/GMTK2025 Ending Song.mp3-af8b54d2c7b7a16d8ddac5e24f2f65bc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/GMTK2025 Ending Song.mp3"
+dest_files=["res://.godot/imported/GMTK2025 Ending Song.mp3-af8b54d2c7b7a16d8ddac5e24f2f65bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
