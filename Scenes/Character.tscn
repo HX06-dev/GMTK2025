@@ -22,6 +22,8 @@ animations = [{
 }]
 
 [node name="Node2D" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
 script = ExtResource("1_jo2ib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,3 +32,8 @@ shape = SubResource("RectangleShape2D_v7dgu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_677pu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.5

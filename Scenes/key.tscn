@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5l64v86bao0g"]
+[gd_scene load_steps=5 format=3 uid="uid://c5l64v86bao0g"]
 
+[ext_resource type="Script" uid="uid://jjjq88hjg4rn" path="res://Scripts/key.gd" id="1_udxw8"]
 [ext_resource type="Texture2D" uid="uid://1wxd7shbk44u" path="res://Assets/Sprites/tmp_key.png" id="1_ut0wq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udxw8"]
@@ -17,9 +18,13 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_udxw8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_udxw8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_brn0f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
