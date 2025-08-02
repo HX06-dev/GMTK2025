@@ -1,11 +1,10 @@
 extends Area2D
 
-signal key_collected
+signal pickup_collected
 
 @onready var sprite = $AnimatedSprite2D
 @onready var light = $PointLight2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
@@ -28,9 +27,6 @@ func _on_body_entered(body: Node2D) -> void:
 	tween.tween_property(sprite, "scale", sprite.scale * 1.5, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	# When animation completes, remove the key
+	emit_signal("pickup_collected")
 	await tween.finished
 	hide()
-	emit_signal("key_collected")
-	$AnimatedSprite2D.modulate.a = 1.0
-	$AnimatedSprite2D.scale = Vector2(1.0, 1.0)
-	$AnimatedSprite2D.position.y = 0.0

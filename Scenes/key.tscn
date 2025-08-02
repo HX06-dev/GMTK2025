@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5l64v86bao0g"]
+[gd_scene load_steps=7 format=3 uid="uid://c5l64v86bao0g"]
 
 [ext_resource type="Script" uid="uid://jjjq88hjg4rn" path="res://Scripts/key.gd" id="1_udxw8"]
 [ext_resource type="Texture2D" uid="uid://1wxd7shbk44u" path="res://Assets/Sprites/tmp_key.png" id="1_ut0wq"]
@@ -17,7 +17,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="Gradient" id="Gradient_cya6u"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_udxw8"]
+gradient = SubResource("Gradient_cya6u")
+fill = 1
+fill_from = Vector2(0.495413, 0.504587)
+fill_to = Vector2(0.504587, 0.798165)
+
+[node name="Key" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_udxw8")
 
@@ -26,5 +35,8 @@ shape = SubResource("CircleShape2D_udxw8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_brn0f")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_udxw8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

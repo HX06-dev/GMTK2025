@@ -2,7 +2,7 @@ extends Control
 
 signal countdown_completed
 
-@export var init_countdown_time: float = 30.0  # Default 60 seconds, editable in inspector
+@export var init_countdown_time: float = 60.0  # Default 60 seconds, editable in inspector
 @export var countdown_time: float
 @onready var countdown_label: Label = $CountdownLabel
 @onready var timer: Timer = $Timer
@@ -55,3 +55,8 @@ func set_countdown_active(active: bool):
 		timer.start()
 	else:
 		timer.stop()
+
+func _on_area_2d_pickup_collected() -> void:
+	init_countdown_time += 5.0
+	countdown_time += 5.0
+	update_countdown_display()

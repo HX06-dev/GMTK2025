@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi8suuhrbk47p"]
+[gd_scene load_steps=9 format=3 uid="uid://bi8suuhrbk47p"]
 
 [ext_resource type="Texture2D" uid="uid://cvv1k4r1kl7l2" path="res://Assets/Sprites/torch.png" id="1_wced7"]
 
@@ -38,6 +38,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[sub_resource type="Gradient" id="Gradient_cya6u"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wced7"]
+gradient = SubResource("Gradient_cya6u")
+fill = 1
+fill_from = Vector2(0.495413, 0.504587)
+fill_to = Vector2(0.490826, 0.889908)
+
+[node name="Torch" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_7ufd5")
 autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_wced7")

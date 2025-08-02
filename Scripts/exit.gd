@@ -13,6 +13,5 @@ func close_door():
 	is_open = false
 
 func _on_body_entered(body: Node2D) -> void:
-	print('foo')
 	if is_open == true:
 		emit_signal("exit_entered")
