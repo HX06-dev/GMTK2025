@@ -12,7 +12,6 @@ func close_door():
 	$Sprite2D.region_rect = Rect2(0, 0, 32, 32)
 	is_open = false
 
-
 func _on_body_entered(body: Node2D) -> void:
 	print('foo')
 	if is_open == true:

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://q47tjo2h81o4" path="res://Assets/Sprites/final_door.png" id="2_650lm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljsmn"]
-size = Vector2(20, 21)
+size = Vector2(16, 21)
 
 [node name="Exit" type="Area2D"]
 collision_mask = 2
