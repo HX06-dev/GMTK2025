@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm7qg1xh4ut4e"]
+[gd_scene load_steps=6 format=3 uid="uid://cm7qg1xh4ut4e"]
 
 [ext_resource type="Script" uid="uid://dohjjxcsb0iw6" path="res://Scripts/exit.gd" id="1_ljsmn"]
 [ext_resource type="Texture2D" uid="uid://q47tjo2h81o4" path="res://Assets/Sprites/final_door.png" id="2_650lm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljsmn"]
 size = Vector2(16, 21)
+
+[sub_resource type="Gradient" id="Gradient_ljsmn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_650lm"]
+gradient = SubResource("Gradient_ljsmn")
+fill = 1
+fill_from = Vector2(0.5, 0.6)
+fill_to = Vector2(0.3, 1)
+metadata/_snap_enabled = true
 
 [node name="Exit" type="Area2D"]
 collision_mask = 2
@@ -18,5 +28,9 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_ljsmn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+enabled = false
+texture = SubResource("GradientTexture2D_650lm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -26,13 +26,15 @@ func restart_level() -> void:
 	$World/Player.position = init_player_pos
 
 	var tween = create_tween()
-	$AudioStreamPlayer.volume_db = 0.0
-	$AudioStreamPlayer.play(0.0)
+	$BGM.volume_db = 0.0
+	$BGM.play(0.0)
 	tween.parallel()
 	tween.tween_property($World/Player/Camera2D, "zoom", Vector2(5, 5), 0.4)
 	tween.tween_property($UICanvas/ColorRect, 'color:a', 0.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
-	tween.tween_property($AudioStreamPlayer, 'volume_db', 1.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
+	tween.tween_property($Extra, 'volume_db', 0.0, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
+	tween.tween_property($BGM, 'volume_db', 1.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
 
+	$Extra.stop()
 	$UICanvas/Control.start_countdown()
 
 
@@ -45,7 +47,7 @@ func death_anim():
 	tween.parallel()
 	tween.tween_property($World/Player/Camera2D, "zoom", Vector2(10, 10), 0.4)
 	tween.tween_property($UICanvas/ColorRect, "color:a", 1.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
-	tween.tween_property($AudioStreamPlayer, "volume_db", 0.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
+	tween.tween_property($BGM, "volume_db", 0.0, 0.4).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN).set_delay(0.2)
 	$World/Player.paused = true
 	$World/Player/AnimatedSprite2D.play('death')
 
@@ -60,3 +62,6 @@ func _on_key_1_key_collected() -> void:
 	
 func _on_exit_exit_entered() -> void:
 	print("you win")
+
+func _on_bgm_finished() -> void:
+	$Extra.play(0.0)

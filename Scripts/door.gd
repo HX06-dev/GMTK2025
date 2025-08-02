@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 		$InteractionArea/InteractionCollision.set_deferred("disabled", true)
 		tween.set_parallel(true)
 		tween.tween_property(sprite, "position:y", sprite.position.y - 16, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property($PointLight2D, "energy", 0.0, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	is_interactable = true
