@@ -24,4 +24,5 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	# When animation completes, remove the key
 	await tween.finished
-	queue_free()
+	#queue_free()
+	hide()
