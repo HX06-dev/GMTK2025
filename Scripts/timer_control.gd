@@ -2,7 +2,8 @@ extends Control
 
 signal countdown_completed
 
-@export var countdown_time: float = 60.0  # Default 60 seconds, editable in inspector
+@export var init_countdown_time: float = 10.0  # Default 60 seconds, editable in inspector
+@export var countdown_time: float
 @onready var countdown_label: Label = $CountdownLabel
 @onready var timer: Timer = $Timer
 
@@ -15,10 +16,10 @@ func _ready():
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	
 	# Start the countdown
-	start_countdown(countdown_time)
+	start_countdown()
 
-func start_countdown(time_in_seconds: float):
-	countdown_time = time_in_seconds
+func start_countdown():
+	countdown_time = init_countdown_time
 	update_countdown_display()
 	timer.start()
 

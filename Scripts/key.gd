@@ -24,5 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	# When animation completes, remove the key
 	await tween.finished
-	#queue_free()
 	hide()
+	$AnimatedSprite2D.modulate.a = 1.0
+	$AnimatedSprite2D.scale = Vector2(1.0, 1.0)
+	$AnimatedSprite2D.position.y = 0.0
