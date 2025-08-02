@@ -2,7 +2,7 @@ extends Control
 
 signal countdown_completed
 
-@export var init_countdown_time: float = 10.0  # Default 60 seconds, editable in inspector
+@export var init_countdown_time: float = 30.0  # Default 60 seconds, editable in inspector
 @export var countdown_time: float
 @onready var countdown_label: Label = $CountdownLabel
 @onready var timer: Timer = $Timer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b51b6pl3bk4mv"]
+[gd_scene load_steps=16 format=4 uid="uid://b51b6pl3bk4mv"]
 
 [ext_resource type="PackedScene" uid="uid://c2yuv5elmniro" path="res://Scenes/Character.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://e8f5xkkj2bd6" path="res://Scripts/game_controller.gd" id="1_kry3j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bi8suuhrbk47p" path="res://Scenes/torch.tscn" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://capvh3ij4jpk7" path="res://Assets/Fonts/m5x7.ttf" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://cyj6aq7fi4bq0" path="res://Scripts/timer_control.gd" id="6_344ge"]
+[ext_resource type="PackedScene" uid="uid://cm7qg1xh4ut4e" path="res://Scenes/exit.tscn" id="6_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://opvdmexkcix7" path="res://Assets/Music/GMTK2025 BGM v2.mp3" id="7_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
@@ -99,8 +100,9 @@ _data = {
 font = ExtResource("6_21xkr")
 font_size = 50
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("exit")]
 script = ExtResource("1_kry3j")
+exit = NodePath("World/Exit")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -129,6 +131,9 @@ position = Vector2(-40, -40)
 
 [node name="Torch1" parent="World/Dec" instance=ExtResource("4_jjvhh")]
 
+[node name="Exit" parent="World" instance=ExtResource("6_ynf5e")]
+position = Vector2(58, 0)
+
 [node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -156,5 +161,7 @@ stream = ExtResource("7_6bp64")
 volume_db = -1.874
 autoplay = true
 
+[connection signal="key_collected" from="World/Keys/Key1" to="." method="_on_key_1_key_collected"]
+[connection signal="exit_entered" from="World/Exit" to="." method="_on_exit_exit_entered"]
 [connection signal="countdown_completed" from="UICanvas/Control" to="." method="_on_control_countdown_completed"]
 [connection signal="timeout" from="UICanvas/Control/Timer" to="UICanvas/Control" method="_on_timer_timeout"]
